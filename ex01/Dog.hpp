@@ -6,15 +6,14 @@
 class Dog : public Animal
 {
 	private:
-		Brain *brain_;
+	Brain *_brain;
+
 	public:
-	virtual void makeSound(void)const ;
-	string getType(void)const;
+	void makeSound(void)const ;
 	Dog();
 	Dog(const Dog&);
 	Dog& operator=(const Dog&);
-	virtual ~Dog();
-	void printIdea(void)const;
+	~Dog();
 };
-ostream& operator<<(const ostream& ,const Dog&);
+std::ostream& operator<<(const std::ostream& ,const Dog&);
 #endif

@@ -3,19 +3,18 @@
 
 #include <iostream>
 
-using namespace std;
 class WrongAnimal
 {
 	protected:
-	string type_;
+	std::string _type;
 	public:
-	virtual void makeSound(void)const ;
-	string getType(void)const;
+	void makeSound(void)const ;
+	std::string getType(void)const;
 	WrongAnimal();
-	WrongAnimal(string name);
+	WrongAnimal(std::string name);
 	WrongAnimal(const WrongAnimal&);
 	WrongAnimal& operator=(const WrongAnimal&);
 	~WrongAnimal();
 };
-ostream& operator<<(const ostream& ,const WrongAnimal&);
+std::ostream& operator<<(const std::ostream& ,const WrongAnimal&);
 #endif

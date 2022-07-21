@@ -1,43 +1,49 @@
 #include "WrongAnimal.hpp"
+#define RED "\e[1;31m"
+#define RESET "\033[0m"
 
-WrongAnimal::WrongAnimal(void) : type_("WrongAnimal") 
+
+WrongAnimal::WrongAnimal(void) : _type("default") 
 {
-	cout << "WrongAnimal default constructor called" << endl;
+	std::cout << RED << "WrongAnimal default constructor called" << RESET << std::endl;
 }
 
-WrongAnimal::WrongAnimal(string newType) : type_(newType) 
+WrongAnimal::WrongAnimal(std::string newType) : _type(newType) 
 {
-	cout << "WrongAnimal named constructor called" << endl;
+	std::cout << RED << "WrongAnimal named constructor called"<< RESET  << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal& origin) : type_(origin.getType())
+WrongAnimal::WrongAnimal(const WrongAnimal& origin) : _type(origin.getType())
 {
-	cout << "WrongAnimal copy constructor called" << endl;
+	std::cout << RED << "WrongAnimal copy constructor called" << RESET << std::endl;
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& origin)
 {
-	cout << "WrongAnimal affection operator called" << endl;
+	std::cout << RED << "WrongAnimal affection operator called" << RESET << std::endl;
 	if (this == &origin)
 		return (*this);
-	this->type_ = origin.getType();
+	this->_type = origin.getType();
 	return(*this);
 }
 
-string WrongAnimal::getType(void)const
+std::string WrongAnimal::getType(void)const
 {
-	cout << "WrongAnimal getType called" << endl;
-	return (this->type_);
+	return (this->_type);
 }
-void WrongAnimal::makeSound(void)const {}
 
-ostream& operator<<(ostream& out ,const WrongAnimal& WrongAnimal)
+std::ostream& operator<<(std::ostream& out ,const WrongAnimal& animal)
 {
-	out << WrongAnimal.getType();
+	out << animal.getType();
 	return (out);
+}
+
+void WrongAnimal::makeSound(void)const 
+{
+	std::cout << "👤 does: GET MY WIFE NAME OUT OF YOUR ******* MOUTH!" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal(void)
 {
-	cout << "Destructor WrongAnimal called" << endl;
+	std::cout << RED << "Destructor WrongAnimal called" << RESET << std::endl;
 }

@@ -1,8 +1,8 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include <iomanip> 
+#include <stdlib.h> 
 
-//to change
 static void	printTitle(std::string title)
 {
 	std::string	toPrint;
@@ -35,29 +35,6 @@ static void	testLeaks(void)
 	delete cat;
 }
 
-static void	testDeepCopy(void)
-{
-	printTitle("DEEP COPY");
-	Dog	dog1;
-	Dog	dog2;
-
-	dog1.printIdea();
-	dog2.printIdea();
-
-	dog2 = dog1;
-	std::cout << std::endl << "After assignation :" << std::endl;
-	dog1.printIdea();
-	dog2.printIdea();
-
-	std::cout << std::endl;
-
-	Cat	cat1;
-	Cat	cat2(cat1);
-
-	cat1.printIdea();
-	cat2.printIdea();
-}
-
 static void	testSubject(int size)
 {
 	printTitle("SUBJECT");
@@ -75,9 +52,22 @@ static void	testSubject(int size)
 
 int	main(void)
 {
-	srand((unsigned int)time(NULL));
+	std::srand((unsigned int)time(NULL));
 	testSubject(5);
 	testLeaks();
-	testDeepCopy();
 	return (0);
 }
+
+/*
+int main()
+{
+const Animal* j = new Dog();
+const Animal* i = new Cat();
+delete j;//should not create a leak
+delete i;
+while (1)
+{
+
+}
+return 0;
+}*/

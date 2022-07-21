@@ -6,15 +6,14 @@
 class Cat : public Animal
 {
 	private:
-		Brain *brain_;
+	Brain *_brain;
+	
 	public:
-	virtual void makeSound(void)const ;
-	string getType(void)const;
+	void makeSound(void)const ;
 	Cat();
 	Cat(const Cat&);
 	Cat& operator=(const Cat&);
-	virtual ~Cat();
-	void printIdea(void)const;
+	~Cat();
 };
-ostream& operator<<(const ostream& ,const Cat&);
+std::ostream& operator<<(const std::ostream& ,const Cat&);
 #endif

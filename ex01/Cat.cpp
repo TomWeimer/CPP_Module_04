@@ -1,38 +1,36 @@
 #include "Cat.hpp"
-
-Cat::Cat(void) : Animal(), brain_(new Brain)
+#define GREEN "\e[1;32m"
+#define RESET "\033[0m"
+Cat::Cat(void) : Animal()
 {
-	type_ = "Cat";
-	cout << "Cat default constructor called" << endl;
+	_type = "Cat";
+	std::cout << GREEN << "	Cat " << RESET << "default constructor called" << std::endl;
+	_brain = new Brain();
 }
 
-Cat::Cat(const Cat& origin) : Animal (origin), brain_(new Brain)
+Cat::Cat(const Cat& origin) : Animal (origin)
 {
-	type_ = "Cat";
-	cout << "Cat copy constructor called" << endl;
+	_type = "Cat";
+	std::cout << GREEN << "	Cat " << RESET << "copy constructor called" << std::endl;
+	_brain = origin._brain;
 }
 
 Cat& Cat::operator=(const Cat& origin)
 {
-	cout << "Cat affection operator called" << endl;
+	std::cout << GREEN << "	Cat " << RESET << "assignement operator called" << std::endl;
 	if (this == &origin)
 		return (*this);
-	this->type_ = origin.getType();
+	this->_type = origin.getType();
+	this->_brain = origin._brain;
 	return(*this);
 }
 
-string Cat::getType(void)const
-{
-	
-	cout << "Cat getType called" << endl;
-	return (this->type_);
-}
 void Cat::makeSound(void)const 
 {
-	cout << "Meeeeoooowwww!" << endl;
+	std::cout << "🐈 does:	Meeeeoooowwww!" << std::endl;
 }
 
-ostream& operator<<(ostream& out ,const Cat& Cat)
+std::ostream& operator<<(std::ostream& out ,const Cat& Cat)
 {
 	out << Cat.getType();
 	return (out);
@@ -40,10 +38,6 @@ ostream& operator<<(ostream& out ,const Cat& Cat)
 
 Cat::~Cat(void)
 {
-	cout << "Destructor Cat called" << endl;
-	delete brain_;
-}
-void Cat::printIdea(void)const
-{
-	cout << this->brain_->getIdea(0) << endl;
+	std::cout << GREEN << "	Cat " << RESET << "Destructor Cat called" << std::endl;
+	delete (_brain);
 }

@@ -1,35 +1,35 @@
 #include "Brain.hpp"
-static string randomString(void)
+static std::string randomString(void)
 {
-	string alphabet = "abcdefghijklmnopqrstuvwxyz";
-	string rtn = "";
+	std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
+	std::string rtn = "";
 	for(int i = 0; i < 5; i++)
 		rtn += alphabet[rand() % alphabet.size()];
 	return(rtn);
 
 }
-string Brain::getIdea(int i)const
+std::string Brain::getIdea(int i)const
 {
 	return (ideas[i]);
 }
 
 Brain::Brain(void)
 {
-	cout << "Brain default constructor" << endl;
+	std::cout << "Brain default constructor" << std::endl;
 	for (int i = 0; i < 100; i++)
 		ideas[i] = randomString();
 }
 
 Brain::Brain(const Brain& origin)
 {
-	cout << "Brain copy constructor" << endl;
+	std::cout << "Brain copy constructor" << std::endl;
 	for (int i = 0; i < 100; i++)
 		this->ideas[i] = origin.getIdea(i);
 }
 
 Brain& Brain::operator=(const Brain& origin)
 {
-	cout << "Brain assignement operator called!" << endl;
+	std::cout << "Brain assignement operator called!" << std::endl;
 	if (this == &origin)
 		return (*this);
 	for (int i = 0; i < 100; i++)
@@ -39,5 +39,5 @@ Brain& Brain::operator=(const Brain& origin)
 
 Brain::~Brain(void)
 {
-	cout << "Brain destructor called!" << endl;
+	std::cout << "Brain destructor called!" << std::endl;
 }

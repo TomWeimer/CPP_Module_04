@@ -1,37 +1,37 @@
 #include "Dog.hpp"
+#define BLUE  "\e[1;34m"
+#define RESET "\033[0m"
 
-Dog::Dog(void) : Animal(), brain_(new Brain)
+Dog::Dog(void) : Animal()
 {
-	type_ = "Dog";
-	cout << "Dog default constructor called" << endl;
+	_type = "Dog";
+	std::cout << BLUE << "	Dog " << RESET << "default constructor called" << std::endl;
+	_brain = new Brain();
 }
 
-Dog::Dog(const Dog& origin) : Animal (origin), brain_(new Brain)
+Dog::Dog(const Dog& origin) : Animal (origin)
 {
-	type_ = "Dog";
-	cout << "Dog copy constructor called" << endl;
+	_type = "Dog";
+	std::cout << BLUE << "	Dog " << RESET << "copy constructor called" << std::endl;
+	_brain = origin._brain;
 }
 
 Dog& Dog::operator=(const Dog& origin)
 {
-	cout << "Dog affection operator called" << endl;
+	std::cout << BLUE << "	Dog " << RESET << "assignement operator called" << std::endl;
 	if (this == &origin)
 		return (*this);
-	this->type_ = origin.getType();
+	this->_type = origin.getType();
+	this->_brain = origin._brain;
 	return(*this);
 }
 
-string Dog::getType(void)const
-{
-	cout << "Dog getType called" << endl;
-	return (this->type_);
-}
 void Dog::makeSound(void)const 
 {
-	cout << "Woof Woof!" << endl;
+	std::cout << "🐩 does:	Woof Woof woof!" << std::endl;
 }
 
-ostream& operator<<(ostream& out ,const Dog& Dog)
+std::ostream& operator<<(std::ostream& out ,const Dog& Dog)
 {
 	out << Dog.getType();
 	return (out);
@@ -39,11 +39,6 @@ ostream& operator<<(ostream& out ,const Dog& Dog)
 
 Dog::~Dog(void)
 {
-	cout << "Destructor Dog called" << endl;
-	delete brain_;
-}
-
-void Dog::printIdea(void)const
-{
-	cout << this->brain_->getIdea(0) << endl;
+	std::cout << BLUE << "	Dog " << RESET  << "Destructor called" << std::endl;
+	delete (_brain);
 }

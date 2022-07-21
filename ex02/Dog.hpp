@@ -9,12 +9,12 @@ class Dog : public Animal
 		Brain *brain_;
 	public:
 	virtual void makeSound(void)const ;
-	string getType(void)const;
+	std::string getType(void)const;
 	Dog();
 	Dog(const Dog&);
 	Dog& operator=(const Dog&);
 	virtual ~Dog();
 	void printIdea(void)const;
 };
-ostream& operator<<(const ostream& ,const Dog&);
+std::ostream& operator<<(const std::ostream& ,const Dog&);
 #endif

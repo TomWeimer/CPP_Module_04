@@ -1,37 +1,34 @@
 #include "WrongCat.hpp"
-
+#define ORANGE "\e[1;33m"
+#define RESET "\033[0m"
 WrongCat::WrongCat(void) : WrongAnimal()
 {
-	type_ = "WrongCat";
-	cout << "WrongCat default constructor called" << endl;
+	_type = "WrongCat";
+	std::cout << ORANGE << "	WrongCat " << RESET <<  "default constructor called" << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat& origin) : WrongAnimal (origin)
 {
-	type_ = "WrongCat";
-	cout << "WrongCat copy constructor called" << endl;
+	_type = "WrongCat";
+	std::cout << ORANGE << "	WrongCat " << RESET << "copy constructor called" << std::endl;
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& origin)
 {
-	cout << "WrongCat affection operator called" << endl;
+	std::cout << ORANGE << "	WrongCat " << RESET << "affection operator called" << std::endl;
 	if (this == &origin)
 		return (*this);
-	this->type_ = origin.getType();
+	this->_type = origin.getType();
 	return(*this);
 }
 
-string WrongCat::getType(void)const
-{
-	cout << "WrongCat getType called" << endl;
-	return (this->type_);
-}
+
 void WrongCat::makeSound(void)const 
 {
-	cout << "Meeeeoooowwww!" << endl;
+	std::cout << "Meeeeoooowwww!" << std::endl;
 }
 
-ostream& operator<<(ostream& out ,const WrongCat& WrongCat)
+std::ostream& operator<<(std::ostream& out ,const WrongCat& WrongCat)
 {
 	out << WrongCat.getType();
 	return (out);
@@ -39,5 +36,5 @@ ostream& operator<<(ostream& out ,const WrongCat& WrongCat)
 
 WrongCat::~WrongCat(void)
 {
-	cout << "Destructor WrongCat called" << endl;
+	std::cout << ORANGE << "	WrongCat " << RESET << "Destructor called" << std::endl;
 }

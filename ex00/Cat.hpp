@@ -5,12 +5,11 @@
 class Cat : public Animal
 {
 	public:
-	virtual void makeSound(void)const ;
-	string getType(void)const;
+	void makeSound(void)const ;
 	Cat();
 	Cat(const Cat&);
 	Cat& operator=(const Cat&);
 	~Cat();
 };
-ostream& operator<<(const ostream& ,const Cat&);
+std::ostream& operator<<(const std::ostream& ,const Cat&);
 #endif

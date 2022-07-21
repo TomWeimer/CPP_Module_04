@@ -1,37 +1,39 @@
 #include "Animal.hpp"
+#define PURPLE "\e[1;35m"
+#define RESET "\033[0m"
 
-Animal::Animal(void) : type_("default") 
+
+Animal::Animal(void) : _type("default") 
 {
-	cout << "Animal default constructor called" << endl;
+	std::cout << PURPLE << "Animal default constructor called" << RESET << std::endl;
 }
 
-Animal::Animal(string newType) : type_(newType) 
+Animal::Animal(std::string newType) : _type(newType) 
 {
-	cout << "Animal named constructor called" << endl;
+	std::cout << PURPLE << "Animal named constructor called"<< RESET  << std::endl;
 }
 
-Animal::Animal(const Animal& origin) : type_(origin.getType())
+Animal::Animal(const Animal& origin) : _type(origin.getType())
 {
-	cout << "Animal copy constructor called" << endl;
+	std::cout << PURPLE << "Animal copy constructor called" << RESET << std::endl;
 }
 
 Animal& Animal::operator=(const Animal& origin)
 {
-	cout << "Animal affection operator called" << endl;
+	std::cout << PURPLE << "Animal affection operator called" << RESET << std::endl;
 	if (this == &origin)
 		return (*this);
-	this->type_ = origin.getType();
+	this->_type = origin.getType();
 	return(*this);
 }
 
-string Animal::getType(void)const
+std::string Animal::getType(void)const
 {
-	cout << "Animal getType called" << endl;
-	return (this->type_);
+	return (this->_type);
 }
 
 
-ostream& operator<<(ostream& out ,const Animal& animal)
+std::ostream& operator<<(std::ostream& out ,const Animal& animal)
 {
 	out << animal.getType();
 	return (out);
@@ -39,10 +41,10 @@ ostream& operator<<(ostream& out ,const Animal& animal)
 
 void Animal::makeSound(void)const 
 {
-	cout << "*Undefined*" << endl;
+	std::cout << "*Undefined*" << std::endl;
 }
 
 Animal::~Animal(void)
 {
-	cout << "Destructor Animal called" << endl;
+	std::cout << PURPLE << "Destructor Animal called" << RESET << std::endl;
 }
